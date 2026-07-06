@@ -602,7 +602,7 @@ function tick() {
     if (targetRotX < -25) { targetRotX = -25; velX = 0; }
 
     const idle = performance.now() - lastInteractTime;
-    if (idle > 1200 && Math.abs(velY) < 0.01) targetRotY += 0.06;
+    if (idle > 1200 && Math.abs(velY) < 0.01) targetRotY += 0.2;
   }
 
   applyTransform();
