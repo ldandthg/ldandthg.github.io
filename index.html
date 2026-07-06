@@ -53,6 +53,56 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
+/* ============ DECORATION: GẤU & KẸO HAI BÊN ============ */
+.deco-container {
+  position: fixed;
+  bottom: 60px;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.deco {
+  font-size: 72px;
+  line-height: 1;
+  filter: drop-shadow(0 10px 20px rgba(255, 105, 180, 0.3));
+  animation: floatDeco 4s ease-in-out infinite;
+}
+
+.deco.left { animation-delay: 0s; }
+.deco.right { animation-delay: 2s; }
+
+.deco-small {
+  position: fixed;
+  font-size: 42px;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 15px rgba(255, 105, 180, 0.2));
+  animation: floatSmall 7s ease-in-out infinite;
+}
+
+@keyframes floatDeco {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+@keyframes floatSmall {
+  0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+  25% { transform: translateY(-20px) scale(1.1) rotate(8deg); }
+  50% { transform: translateY(0) scale(1) rotate(0deg); }
+  75% { transform: translateY(20px) scale(0.9) rotate(-8deg); }
+}
+
+@media (max-width: 600px) {
+  .deco { font-size: 48px; }
+  .deco-small { font-size: 28px; }
+  .deco-container { padding: 0 10px; bottom: 120px; }
+}
+
+/* ============ BACKGROUND EFFECTS ============ */
 .bubble-container {
   position: fixed;
   inset: 0;
@@ -374,6 +424,16 @@ header p {
 </audio>
 
 <div class="bubble-container" id="bubbleContainer"></div>
+
+<div class="deco-container">
+  <div class="deco left">🧸</div>
+  <div class="deco right">🧸</div>
+</div>
+
+<div class="deco-small" style="left: 5%; top: 20%;">🌸</div>
+<div class="deco-small" style="right: 5%; top: 25%;">🍭</div>
+<div class="deco-small" style="left: 8%; bottom: 25%;">🌈</div>
+<div class="deco-small" style="right: 8%; bottom: 20%;">🎀</div>
 
 <div class="popup-overlay" id="popup">
   <div class="popup-box">
