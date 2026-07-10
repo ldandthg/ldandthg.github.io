@@ -10,8 +10,8 @@
 <meta property="og:title" content="Linh Đan hỏi xíu nè" />
 <meta property="og:description" content="Cho Linh Đan hỏi xíu, bạn có muốn xem ảnh của Linh Đan hong 👀" />
 <meta property="og:image" content="https://ldandthg.github.io/5018f0bc1adf9eaf3f5308494a59fa2b.jpg" />
-<!-- <meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" /> -->
+<!-- <meta property="og:image:width" content="564" />
+<meta property="og:image:height" content="564" /> -->
 <meta property="og:url" content="https://ldandthg.github.io/"/>
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#FF1493" />
@@ -488,7 +488,6 @@ header p {
   min-width: 180px;
 }
 
-/* Desktop: góc dưới bên trái */
 @media (min-width: 769px) {
   .visitor-widget {
     bottom: 24px;
@@ -496,7 +495,6 @@ header p {
   }
 }
 
-/* Tablet: góc dưới bên trái, nhỏ hơn */
 @media (max-width: 768px) and (min-width: 481px) {
   .visitor-widget {
     bottom: 16px;
@@ -507,7 +505,6 @@ header p {
   }
 }
 
-/* ===== MOBILE: Ô VUÔNG NHỎ GỌN ===== */
 @media (max-width: 480px) {
   .visitor-widget {
     bottom: 16px;
@@ -515,7 +512,7 @@ header p {
     right: auto;
     max-width: 80px;
     min-width: 70px;
-    padding: 10px 12px;
+    padding: 10px 8px;
     border-radius: 14px;
     display: flex;
     flex-direction: column;
@@ -523,11 +520,7 @@ header p {
     justify-content: center;
     box-shadow: 0 6px 25px rgba(255, 105, 180, 0.2);
     border: 1px solid rgba(255, 105, 180, 0.15);
-  }
-  
-  /* Ẩn tất cả các phần không cần thiết */
-  .visitor-widget .visitor-header .label {
-    display: none;
+    background: rgba(255, 255, 255, 0.96);
   }
   
   .visitor-widget .visitor-badges {
@@ -553,6 +546,7 @@ header p {
     flex-direction: column;
     align-items: center;
     gap: 0;
+    width: 100%;
   }
   
   .visitor-widget .visitor-header .total {
@@ -560,6 +554,7 @@ header p {
     flex-direction: column;
     align-items: center;
     gap: 0;
+    width: 100%;
   }
   
   .visitor-widget .visitor-header .total .number {
@@ -569,30 +564,27 @@ header p {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1.1;
+    display: block;
+    text-align: center;
   }
   
-  /* Thêm icon con mắt nhỏ */
-  .visitor-widget::after {
-    content: '👀';
-    font-size: 14px;
+  .visitor-widget .visitor-header .total .label {
+    display: block !important;
+    font-size: 10px;
+    color: #999;
+    font-weight: 500;
+    text-align: center;
     margin-top: 2px;
-    opacity: 0.7;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
   }
   
-  /* Hiệu ứng hover nhẹ */
+  .visitor-widget::after {
+    display: none;
+  }
+  
   .visitor-widget:hover {
     transform: scale(1.05);
-  }
-}
-
-/* Mobile info - ẩn trên mobile */
-.visitor-mobile-info {
-  display: none;
-}
-
-@media (max-width: 480px) {
-  .visitor-mobile-info {
-    display: flex !important;
   }
 }
 
@@ -793,6 +785,10 @@ header p {
     max-height: 150px;
   }
 }
+
+.visitor-mobile-info {
+  display: none;
+}
 </style>
 </head>
 <body>
@@ -848,7 +844,7 @@ header p {
   <div class="visitor-header">
     <div class="total">
       <span class="number" id="visitorCount">0</span>
-      <span class="label">Lượt xem</span>
+      <span class="label">view</span>
     </div>
     <div class="visitor-badges">
       <div class="visitor-badge">
@@ -882,7 +878,6 @@ header p {
 </div>
 
 <script>
-
 const VISITOR_API = 'https://morning-forest-8d2d.vanhverrysad.workers.dev/api/visitor';
 
 const countryEmojis = {
