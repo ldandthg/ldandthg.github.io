@@ -473,7 +473,6 @@ header p {
   .glow-ring:nth-child(2) { inset: -20px; }
 }
 
-/* ===== VISITOR COUNTER STYLES - RESPONSIVE ===== */
 .visitor-widget {
   position: fixed;
   z-index: 999;
@@ -489,6 +488,7 @@ header p {
   min-width: 180px;
 }
 
+/* Desktop: góc dưới bên trái */
 @media (min-width: 769px) {
   .visitor-widget {
     bottom: 24px;
@@ -496,6 +496,7 @@ header p {
   }
 }
 
+/* Tablet: góc dưới bên trái, nhỏ hơn */
 @media (max-width: 768px) and (min-width: 481px) {
   .visitor-widget {
     bottom: 16px;
@@ -506,25 +507,31 @@ header p {
   }
 }
 
+/* ===== MOBILE: Ô VUÔNG NHỎ GỌN ===== */
 @media (max-width: 480px) {
   .visitor-widget {
-    bottom: 12px;
-    left: 12px;
-    right: 12px;
-    max-width: none;
-    min-width: unset;
-    padding: 10px 14px;
-    border-radius: 12px;
+    bottom: 16px;
+    left: 16px;
+    right: auto;
+    max-width: 80px;
+    min-width: 70px;
+    padding: 10px 12px;
+    border-radius: 14px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 4px 8px;
+    justify-content: center;
+    box-shadow: 0 6px 25px rgba(255, 105, 180, 0.2);
+    border: 1px solid rgba(255, 105, 180, 0.15);
   }
   
-  /* Mobile: ẩn các phần không cần thiết */
-  .visitor-widget .visitor-header .total .label {
-    font-size: 9px;
+  /* Ẩn tất cả các phần không cần thiết */
+  .visitor-widget .visitor-header .label {
+    display: none;
+  }
+  
+  .visitor-widget .visitor-badges {
+    display: none;
   }
   
   .visitor-widget .visitor-current {
@@ -535,56 +542,50 @@ header p {
     display: none;
   }
   
-  .visitor-widget .visitor-badges {
-    display: none;
+  .visitor-widget .visitor-mobile-info {
+    display: none !important;
   }
   
-  /* Mobile: hiển thị dạng thanh ngang */
   .visitor-widget .visitor-header {
     margin-bottom: 0;
     padding-bottom: 0;
     border-bottom: none;
-    flex: 1;
-    gap: 6px;
-  }
-  
-  .visitor-widget .visitor-header .total .number {
-    font-size: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
   }
   
   .visitor-widget .visitor-header .total {
     display: flex;
-    align-items: baseline;
-    gap: 6px;
-  }
-  
-  .visitor-widget .visitor-header .total .label {
-    font-size: 10px;
-    color: #999;
-  }
-  
-  /* Mobile: thêm info nhỏ gọn */
-  .visitor-widget .visitor-mobile-info {
-    display: flex;
-    gap: 6px;
-    font-size: 10px;
-    color: #666;
+    flex-direction: column;
     align-items: center;
+    gap: 0;
   }
   
-  .visitor-widget .visitor-mobile-info span {
-    background: rgba(255, 105, 180, 0.08);
-    padding: 2px 8px;
-    border-radius: 10px;
-    white-space: nowrap;
+  .visitor-widget .visitor-header .total .number {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF1493, #FF69B4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
   }
   
-  .visitor-widget .visitor-stats-panel {
-    display: none !important;
+  /* Thêm icon con mắt nhỏ */
+  .visitor-widget::after {
+    content: '👀';
+    font-size: 14px;
+    margin-top: 2px;
+    opacity: 0.7;
+  }
+  
+  /* Hiệu ứng hover nhẹ */
+  .visitor-widget:hover {
+    transform: scale(1.05);
   }
 }
 
-/* Mobile info - chỉ hiển thị trên mobile */
+/* Mobile info - ẩn trên mobile */
 .visitor-mobile-info {
   display: none;
 }
@@ -843,7 +844,6 @@ header p {
   </div>
 </div>
 
-<!-- ===== VISITOR COUNTER WIDGET ===== -->
 <div class="visitor-widget" id="visitorWidget">
   <div class="visitor-header">
     <div class="total">
